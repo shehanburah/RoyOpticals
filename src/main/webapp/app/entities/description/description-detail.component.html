@@ -1,0 +1,122 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="description">
+            <h2><span>Description</span> {{description.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Customer Id</span></dt>
+                <dd>
+                    <span>{{description.customerId}}</span>
+                </dd>
+                <dt><span>Invoice Id</span></dt>
+                <dd>
+                    <span>{{description.invoiceId}}</span>
+                </dd>
+                <dt><span>Sph Left</span></dt>
+                <dd>
+                    <span>{{description.sphLeft}}</span>
+                </dd>
+                <dt><span>Cyl Left</span></dt>
+                <dd>
+                    <span>{{description.cylLeft}}</span>
+                </dd>
+                <dt><span>Axis Left</span></dt>
+                <dd>
+                    <span>{{description.axisLeft}}</span>
+                </dd>
+                <dt><span>Reading Left</span></dt>
+                <dd>
+                    <span>{{description.readingLeft}}</span>
+                </dd>
+                <dt><span>Sph Right</span></dt>
+                <dd>
+                    <span>{{description.sphRight}}</span>
+                </dd>
+                <dt><span>Cyl Right</span></dt>
+                <dd>
+                    <span>{{description.cylRight}}</span>
+                </dd>
+                <dt><span>Axis Right</span></dt>
+                <dd>
+                    <span>{{description.axisRight}}</span>
+                </dd>
+                <dt><span>Reading Right</span></dt>
+                <dd>
+                    <span>{{description.readingRight}}</span>
+                </dd>
+                <dt><span>Order Date</span></dt>
+                <dd>
+                    <span>{{description.orderDate}}</span>
+                </dd>
+                <dt><span>Delevery Date</span></dt>
+                <dd>
+                    <span>{{description.deleveryDate}}</span>
+                </dd>
+                <dt><span>Order No</span></dt>
+                <dd>
+                    <span>{{description.orderNo}}</span>
+                </dd>
+                <dt><span>Frame</span></dt>
+                <dd>
+                    <span>{{description.frame}}</span>
+                </dd>
+                <dt><span>Model No</span></dt>
+                <dd>
+                    <span>{{description.modelNo}}</span>
+                </dd>
+                <dt><span>Size</span></dt>
+                <dd>
+                    <span>{{description.size}}</span>
+                </dd>
+                <dt><span>Colour</span></dt>
+                <dd>
+                    <span>{{description.colour}}</span>
+                </dd>
+                <dt><span>L Type</span></dt>
+                <dd>
+                    <span>{{description.lType}}</span>
+                </dd>
+                <dt><span>L Size</span></dt>
+                <dd>
+                    <span>{{description.lSize}}</span>
+                </dd>
+                <dt><span>Pd</span></dt>
+                <dd>
+                    <span>{{description.pd}}</span>
+                </dd>
+                <dt><span>Inset</span></dt>
+                <dd>
+                    <span>{{description.inset}}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{description.name}}</span>
+                </dd>
+                <dt><span>Remarks</span></dt>
+                <dd>
+                    <span>{{description.remarks}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/description', description.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+
+        
+            <button type="button"
+                    [routerLink]="['/print/description', description.id]"
+                    class="btn btn-warning">
+                <fa-icon [icon]="'print'"></fa-icon>&nbsp;<span> Print Description</span>
+            </button>
+        </div>
+    </div>
+</div>

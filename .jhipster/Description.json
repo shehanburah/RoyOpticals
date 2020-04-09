@@ -1,0 +1,109 @@
+{
+    "name": "Description",
+    "fields": [
+        {
+            "fieldName": "customerId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "invoiceId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sphLeft",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cylLeft",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "axisLeft",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "readingLeft",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sphRight",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cylRight",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "axisRight",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "readingRight",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "orderDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "deleveryDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "orderNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "frame",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modelNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "size",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "colour",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lSize",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pd",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "inset",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "remarks",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191222190854",
+    "entityTableName": "description",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

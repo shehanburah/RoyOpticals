@@ -1,0 +1,11 @@
+entity Items{
+invoiceId String
+description String
+quantity Double
+rate Double
+amount Double
+}
+
+
+paginate * with pagination
+search * with elasticsearch

@@ -1,0 +1,43 @@
+entity Description{
+    customerId String
+    
+    invoiceId String
+    
+    sphLeft String
+    
+    cylLeft String
+    
+    axisLeft String
+    
+    readingLeft String
+    
+    sphRight String
+    
+    cylRight String
+    
+    axisRight String
+    readingRight String
+    orderDate Instant
+    deleveryDate Instant
+    orderNo String
+
+    frame String
+    modelNo String
+    size String
+    colour String
+
+    lType String
+    lSize String
+    pd String
+    inset String
+
+    name String
+    remarks String 
+
+
+    
+}
+
+
+paginate * with pagination
+search * with elasticsearch

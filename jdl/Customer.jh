@@ -1,0 +1,27 @@
+entity Customer{
+     title  Title
+firstName String
+lastName String
+dob Instant
+city String
+address String
+mobile String
+landline String
+gender Boolean
+registered Instant
+
+
+}
+ 
+enum Title{
+    MR,
+    MRS,
+    MAS,
+    MS,
+    DR,
+    REV,
+    HON
+}
+
+paginate * with pagination
+search * with elasticsearch

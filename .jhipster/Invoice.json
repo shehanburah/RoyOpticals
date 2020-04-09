@@ -1,0 +1,49 @@
+{
+    "name": "Invoice",
+    "fields": [
+        {
+            "fieldName": "customerId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rx",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "deleveryDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "orderDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "advance",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "balance",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "delivered",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "paid",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191222082222",
+    "entityTableName": "invoice",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

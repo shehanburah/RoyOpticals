@@ -1,0 +1,9 @@
+entity MonthlyLog{
+    identification Integer
+    reportObtainedBy String
+    createdDate LocalDate
+    amount Integer
+    remark String
+}
+paginate * with pagination
+search * with elasticsearch

@@ -1,0 +1,9 @@
+entity SolderingJobInvoice{
+    customerId String
+    price Double
+    orderDate LocalDate
+    delivered Boolean
+    deliveryDate LocalDate
+}
+paginate * with pagination
+search * with elasticsearch

@@ -1,0 +1,16 @@
+
+entity DailyLog{
+    createdDate LocalDate  
+    rx Integer
+    invoiceId String
+    solderingJobInvoiceId String
+     customer String
+     customerId String
+    description String
+    amount Double
+
+}
+
+
+paginate * with pagination
+search * with elasticsearch

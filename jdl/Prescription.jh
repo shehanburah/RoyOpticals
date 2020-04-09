@@ -1,0 +1,14 @@
+entity Prescription{
+customerId String
+
+    invoiceId String
+name String
+date Instant
+description TextBlob
+
+}
+
+
+
+paginate * with pagination
+search * with elasticsearch

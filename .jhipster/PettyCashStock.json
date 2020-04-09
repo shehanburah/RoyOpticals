@@ -1,0 +1,61 @@
+{
+    "name": "PettyCashStock",
+    "fields": [
+        {
+            "fieldName": "itemName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "brandName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modelNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "size",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "remarks",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "discountedPrice",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "stockInDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "estNextStockInDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191226164154",
+    "entityTableName": "petty_cash_stock",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

@@ -1,0 +1,14 @@
+entity Invoice{
+    customerId String
+    rx Integer
+    deleveryDate Instant
+    orderDate Instant
+    advance Double
+    balance Double  
+    delivered Boolean
+    paid Boolean
+}
+
+
+paginate * with pagination
+search * with elasticsearch

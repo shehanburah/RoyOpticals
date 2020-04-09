@@ -1,0 +1,37 @@
+{
+    "name": "MonthlyLog",
+    "fields": [
+        {
+            "fieldName": "identification",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "reportObtainedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "remark",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200109190440",
+    "entityTableName": "monthly_log",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

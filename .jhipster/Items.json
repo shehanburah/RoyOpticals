@@ -1,0 +1,37 @@
+{
+    "name": "Items",
+    "fields": [
+        {
+            "fieldName": "invoiceId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "rate",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191222174012",
+    "entityTableName": "items",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

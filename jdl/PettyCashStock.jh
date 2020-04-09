@@ -1,0 +1,19 @@
+
+
+entity PettyCashStock{
+    itemName String
+    brandName String
+    modelNumber String
+    type String
+    size Integer
+    remarks String
+    quantity Integer
+    price Integer
+    discountedPrice Integer
+    stockInDate LocalDate
+    estNextStockInDate LocalDate
+
+}
+
+paginate * with pagination
+search * with elasticsearch

@@ -1,0 +1,61 @@
+version: '2'
+services:
+  royopticals-app_a:
+    image: heavenscode/royopticals_a
+    restart: always
+    environment:
+      - _JAVA_OPTIONS=-Xmx128m -Xms64m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - SPRING_DATA_MONGODB_URI=mongodb://royopticals-mongodb:27017
+      - SPRING_DATA_MONGODB_DATABASE=RoyOpticals_Branch_A
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - SPRING_DATA_JEST_URI=http://royopticals-elasticsearch:9200
+      - SPRING_ELASTICSEARCH_REST_URIS=http://royopticals-elasticsearch:9200
+    ports:
+      - 8080:8080
+
+  royopticals-app_b:
+    image: heavenscode/royopticals_b
+    restart: always
+    environment:
+      - _JAVA_OPTIONS=-Xmx128m -Xms64m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - SPRING_DATA_MONGODB_URI=mongodb://royopticals-mongodb:27017
+      - SPRING_DATA_MONGODB_DATABASE=RoyOpticals_Branch_B
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - SPRING_DATA_JEST_URI=http://royopticals-elasticsearch:9200
+      - SPRING_ELASTICSEARCH_REST_URIS=http://royopticals-elasticsearch:9200
+    ports:
+      - 8080:8080
+
+  royopticals-app_c:
+    image: heavenscode/royopticals_c
+    restart: always
+    environment:
+      - _JAVA_OPTIONS=-Xmx128m -Xms64m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - SPRING_DATA_MONGODB_URI=mongodb://royopticals-mongodb:27017
+      - SPRING_DATA_MONGODB_DATABASE=RoyOpticals_Branch_C
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - SPRING_DATA_JEST_URI=http://royopticals-elasticsearch:9200
+      - SPRING_ELASTICSEARCH_REST_URIS=http://royopticals-elasticsearch:9200
+    ports:
+      - 8080:8080
+
+      
+
+
+
+  royopticals-mongodb:
+    restart: always
+    extends:
+      file: mongodb.yml
+      service: royopticals-mongodb
+  royopticals-elasticsearch:
+    restart: always
+    extends:
+      file: elasticsearch.yml
+      service: royopticals-elasticsearch

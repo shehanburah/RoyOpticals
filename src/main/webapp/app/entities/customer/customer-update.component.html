@@ -1,0 +1,167 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm"
+            role="form"
+            novalidate
+            (ngSubmit)="save()"
+            [formGroup]="editForm">
+            <h2 id="jhi-customer-heading">Create or edit a Customer</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group"
+                    [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text"
+                        class="form-control"
+                        id="id"
+                        name="id"
+                        formControlName="id"
+                        readonly />
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                for="field_title">Title</label>
+                            <select class="form-control"
+                                name="title"
+                                formControlName="title"
+                                id="field_title">
+                                <option value="MR">MR</option>
+                                <option value="MRS">MRS</option>
+                                <option value="MAS">MAS</option>
+                                <option value="MS">MS</option>
+                                <option value="DR">DR</option>
+                                <option value="REV">REV</option>
+                                <option value="HON">HON</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                for="field_firstName">First Name</label>
+                            <input type="text"
+                                class="form-control"
+                                name="firstName"
+                                id="field_firstName"
+                                formControlName="firstName" />
+                        </div>
+                    </div>
+                    <div class="col-4">
+
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                for="field_lastName">Last Name</label>
+                            <input type="text"
+                                class="form-control"
+                                name="lastName"
+                                id="field_lastName"
+                                formControlName="lastName" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label class="form-control-label" for="field_dob">Dob</label>
+                    <div class="d-flex">
+                        <input id="field_dob" type="datetime-local" class="form-control" name="dob" formControlName="dob" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_city">City</label>
+                    <input type="text"
+                        class="form-control" autocomplete="on"
+                        name="city"
+                        id="field_city"
+                        formControlName="city" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_address">Address</label>
+                    <input type="text"
+                        class="form-control"
+                        name="address"
+                        id="field_address"
+                        formControlName="address" />
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                for="field_mobile">Mobile</label>
+                            <input type="text"
+                                class="form-control"
+                                name="mobile"
+                                id="field_mobile"
+                                formControlName="mobile" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                for="field_landline">Landline</label>
+                            <input type="text"
+                                class="form-control"
+                                name="landline"
+                                id="field_landline"
+                                formControlName="landline" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_gender">Gender , Male ? </label>
+                    <input type="checkbox"
+                        class="form-control"
+                        name="gender"
+                        id="field_gender"
+                        formControlName="gender" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_registered">Registered</label>
+                    <div class="d-flex">
+                        <input id="field_registered"
+                            type="datetime-local"
+                            class="form-control"
+                            name="registered"
+                            formControlName="registered"
+                            placeholder="YYYY-MM-DD HH:mm" />
+                            <button type="button"
+                            id="nowDateTime"
+                            class="btn btn-secondary"
+                            (click)="nowDateTime()">
+                            <span>◉</span>
+
+
+                        </button>
+                    </div>
+                </div>
+
+ 
+
+
+            </div>
+            <div>
+                <button type="button"
+                    id="cancel-save"
+                    class="btn btn-secondary"
+                    (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit"
+                    id="save-entity"
+                    [disabled]="editForm.invalid || isSaving"
+                    class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

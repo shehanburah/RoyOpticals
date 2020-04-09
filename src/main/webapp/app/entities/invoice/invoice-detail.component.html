@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="invoice">
+            <h2><span>Invoice</span> {{invoice.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Customer Id</span></dt>
+                <dd>
+                    <span>{{invoice.customerId}}</span>
+                </dd>
+                <dt><span>Rx</span></dt>
+                <dd>
+                    <span>{{invoice.rx}}</span>
+                </dd>
+                <dt><span>Delevery Date</span></dt>
+                <dd>
+                    <span>{{invoice.deleveryDate}}</span>
+                </dd>
+                <dt><span>Order Date</span></dt>
+                <dd>
+                    <span>{{invoice.orderDate}}</span>
+                </dd>
+                <dt><span>Advance</span></dt>
+                <dd>
+                    <span>{{invoice.advance}}</span>
+                </dd>
+                <dt><span>Balance</span></dt>
+                <dd>
+                    <span>{{invoice.balance}}</span>
+                </dd>
+                <dt><span>Delivered</span></dt>
+                <dd>
+                    <span>{{invoice.delivered}}</span>
+                </dd>
+                <dt><span>Paid</span></dt>
+                <dd>
+                    <span>{{invoice.paid}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/invoice', invoice.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/print/invoice', invoice.id]"
+                    class="btn btn-warning">
+                <fa-icon [icon]="'print'"></fa-icon>&nbsp;<span> Print Invoice</span>
+            </button>
+        </div>
+    </div>
+</div>

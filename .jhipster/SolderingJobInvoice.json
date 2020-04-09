@@ -1,0 +1,37 @@
+{
+    "name": "SolderingJobInvoice",
+    "fields": [
+        {
+            "fieldName": "customerId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "orderDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "delivered",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "deliveryDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200101064119",
+    "entityTableName": "soldering_job_invoice",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

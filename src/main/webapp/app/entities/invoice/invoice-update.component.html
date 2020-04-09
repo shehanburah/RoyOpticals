@@ -1,0 +1,138 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm"  >
+            <h2 id="jhi-invoice-heading">Create or edit a Invoice</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_customerId">Customer Id</label>
+                    <input type="text" class="form-control" name="customerId" id="field_customerId"
+                           formControlName="customerId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rx">Rx</label>
+                    <input type="number" class="form-control" name="rx" id="field_rx"
+                           formControlName="rx"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_orderDate">Order Date</label>
+                    <div class="d-flex">
+                        <input id="field_orderDate" type="datetime-local" class="form-control" name="orderDate" formControlName="orderDate" placeholder="YYYY-MM-DD HH:mm"/>
+                        <button type="button"
+                        id="nowDateTime"
+                        class="btn btn-secondary"
+                        (click)="nowDateTimeOrder()">
+                        <span>◉</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deleveryDate">Delevery Date</label>
+                    <div class="d-flex">
+                        <input id="field_deleveryDate" type="datetime-local" class="form-control" name="deleveryDate" formControlName="deleveryDate" placeholder="YYYY-MM-DD HH:mm"/>
+                        <button type="button"
+                        id="nowDateTime"
+                        class="btn btn-secondary"
+                        (click)="nowDateTimeDelivery()">
+                        <span>◉</span></button>
+                        <button type="button"
+                        id="nowDateTime"
+                        class="btn btn-secondary"
+                        (click)="addDays()">
+                        <span>+</span></button>
+                    </div>
+                </div>
+                <form>
+                    <table class="table">
+                        <tr class="table-primary">
+                            <th hidden>ID</th>
+                            <th>Description/ Item Name</th>
+                            <th>Quantity</th>
+                            <th>Rate</th>
+                            <th>Amount</th>
+                            <th>....</th>
+                        </tr>
+                        <tr *ngFor="let item of itemsList; let i = index">
+                            <td hidden ><input type="text" [name]="'id'+i" [(ngModel)]="item.id"></td>
+                            <td>
+                                <!-- <input type="text" [name]="'description'+i" [(ngModel)]="item.description"> -->
+                                <input list="browsers" [name]="'description'+i" (input)="onInputItem(item ,i)"  [(ngModel)]="item.description"  style="width: 100%;">
+
+                                <datalist id="browsers" *ngFor="let item of pettyCashStockList" style="width: 100%;" >
+                                    <option [value]="item.itemName+' '+item.brandName+' | '+item.modelNumber">size:{{ item.size }}| type:{{ item.type}}| qty:{{item.quantity}}| price:{{item.price}} </option>
+                                    <!-- <option value="Firefox">
+                                    <option value="Chrome">
+                                    <option value="Opera">
+                                    <option value="Safari"> -->
+                                  </datalist>
+                            </td>
+
+
+
+                            <td><input type="text"  (input)="onTableFormChange(i)" [name]="'quantity'+i" [(ngModel)]=" item.quantity"></td>
+                            <td><input type="text"  (input)="onTableFormChange(i)" [name]="'rate'+i" [(ngModel)]="item.rate"></td>
+                            <td><input type="text" [name]="'amount'+i" [(ngModel)]="item.amount"></td>
+                            <td> <button (click)="removeRow(i)" type="button" class="btn btn-success">&times;</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <button (click)="addRow()" type="button" class="btn btn-success">+</button>
+                    <button (click)="show()" type="button" class="btn btn-warning">#</button>
+                </form>
+<br><button type="button" id="exchangeValues" class="btn btn-info btn-lg"  (click)="exchangeValues()">
+    <fa-icon [icon]="'retweet'"></fa-icon>&nbsp;<span>Switch <i>Advance</i> and <i>Balance</i> values </span>
+</button>
+<button type="button" id="calcTotal" class="btn btn-danger btn-lg" style="float: right;" (click)="calcTotal()">
+    <fa-icon [icon]="'check'"></fa-icon>&nbsp;<span>Calculate Total</span>
+</button> 
+
+                <br>
+                <div class="card border-primary mb-3" style="max-width: 100%; padding-top: 5px; padding-bottom: 5px; margin-top: 15px; padding-left: 5px; padding-right: 5px;">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_advance">Advance</label>
+                    <input type="number" class="form-control" name="advance" id="field_advance"  (change)="onFormChange()"
+                           formControlName="advance"/>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_balance">Balance</label>
+                    <input type="number" class="form-control" name="balance" id="field_balance"
+                           formControlName="balance"/>
+                </div>
+            </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_delivered">Delivered</label>
+                    <input type="checkbox" class="form-control" name="delivered" id="field_delivered"
+                           formControlName="delivered"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_paid">Paid</label>
+                    <input type="checkbox" class="form-control" name="paid" id="field_paid"
+                    (click)="onPaid()"
+                           formControlName="paid"/>
+                </div>
+            
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+
+                <!-- <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save and print</span>
+                </button> -->
+            </div>
+        </form>
+    </div>
+</div>

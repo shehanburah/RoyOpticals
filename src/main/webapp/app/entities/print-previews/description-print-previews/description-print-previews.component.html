@@ -1,0 +1,137 @@
+<div class="body">
+
+  <div class="page">
+
+    <header>
+      <h3 style="text-align: center;">Roy Opticals Description</h3>
+      <div class="row">
+
+        <!-- <div class="row">
+          <div class="col-10">
+            <h2 style="text-align: right; margin-top: 5px;">Roy Medi Care Center</h3>
+              <div class="address">
+                <p>No. 146, Colombo Road, Negombo, Sri Lanka.</p>
+                <p>Tel: 031-4936889 / 031-2225298 / 031-4936612 Fax:031-2225298</p>
+                <p>E-maiil: royopticals55@gmail.com</p>
+              </div>
+          </div>
+          <div class="col-2">
+            <img src="../../../../content/images/Roy optical (Black).png"
+              style="width: 70%; padding-top: 15px; float: center; ">
+          </div>
+
+        </div>
+      </div> -->
+
+    </header>
+
+
+    <div class="header" *ngIf="!negombo">
+      <p>Roy Opticals - Negombo Head Office</p>
+      <p>031-2225298</p>
+    </div>
+    <div class="header" *ngIf="dankotuwa">
+      <p>Roy Opticals - Dankotuwa Branch</p>
+      <p>031-2225298</p>
+    </div>
+    <div class="header" *ngIf="wennapuwa">
+      <p>Roy Opticals - Wennapuwa Office</p>
+      <p>031-2225298</p>
+    </div>
+
+    <div class="row"
+      style="padding-top: 5px;">
+      <div class="col-4">
+        <b> O/Date </b>: {{description.orderDate   | date:'dd/MM/yy HH:mm'}}
+      </div>
+      <div class="col-4">
+        <b> D/Date</b> : {{description.deleveryDate   | date:'dd/MM/yy HH:mm'}}
+      </div>
+      <div class="col-4">
+        <b> O/No</b> : {{description.orderNo}}
+      </div>
+    </div>
+
+    <div class="row">
+      <table>
+        <tr>
+          <th></th>
+          <th><b>SPH</b></th>
+          <th><b> CYL</b></th>
+          <th><b>AXIS</b></th>
+          <th><b>SPH</b></th>
+          <th><b>CYL</b></th>
+          <th><b>AXIS</b></th>
+        </tr>
+        <tr>
+          <th><b>Distance</b></th>
+          <td>{{description.sphLeft}}</td>
+          <td>{{description.cylLeft}}</td>
+          <td>{{description.axisLeft}}</td>
+          <td>{{description.sphRight}}</td>
+          <td>{{description.cylRight}}</td>
+          <td>{{description.axisRight}}</td>
+        </tr>
+        <tr>
+          <th><b>Reading</b></th>
+          <td colspan="3">{{description.readingLeft}}</td>
+          <td colspan="3">{{description.readingRight}}</td>
+        </tr>
+      </table>
+
+      <div class="row"
+        style="width:100%;padding-top: 2px;">
+        <div class="col-2">
+          <b> Frame </b> <br>
+          <b> Model No.</b> <br>
+          <b> Size </b> <br> 
+        </div>
+        <div class="col-2">
+          : {{description.frame}} <br>
+          : {{description.modelNo}} <br>
+          : {{description.size}} <br> 
+        </div>
+        <div class="col-2"> 
+          <b> Colour </b> <br>
+          <b> L.Type</b> <br>
+          <b> L.Size</b> <br>
+        </div>
+        <div class="col-2"> 
+          : {{description.colour}}<br>
+          : {{description.lType}} <br>
+          : {{description.lSize}} 
+        </div>
+
+
+
+        <div class="col-2">
+          <b> P.D. </b> <br>
+          <b>Inset </b> <br>
+        </div>
+        <div class="col-2">
+          : {{description.pd}} <br>
+          : {{description.inset}}
+        </div>
+
+
+
+      </div>
+
+
+      <div class="row"
+        style="width: 100%;padding-top: 5px;">
+        <div class="col-2">
+        <b>  Name</b> <br>
+         <b> Remarks</b>
+        </div>
+        <div class="col-10">
+          : {{description.name}} <br>
+          : {{ description.remarks}}
+        </div>
+      </div>
+
+      <br>
+    </div>
+
+  </div>
+</div>

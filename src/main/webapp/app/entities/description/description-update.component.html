@@ -1,0 +1,279 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm"
+            role="form"
+            novalidate
+            (ngSubmit)="save()"
+            [formGroup]="editForm">
+            <h2 id="jhi-description-heading">Create or edit a Description</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group"
+                    [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text"
+                        class="form-control"
+                        id="id"
+                        name="id"
+                        formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_customerId">Customer Id</label>
+                    <input type="text"
+                        class="form-control"
+                        name="customerId"
+                        id="field_customerId"
+                        formControlName="customerId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_invoiceId">Invoice Id</label>
+                    <input type="text"
+                        class="form-control"
+                        name="invoiceId"
+                        id="field_invoiceId"
+                        formControlName="invoiceId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_sphLeft">Sph Left</label>
+                    <input type="text"
+                        class="form-control"
+                        name="sphLeft" autocomplete="on"
+                        id="field_sphLeft"
+                        formControlName="sphLeft" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_cylLeft">Cyl Left</label>
+                    <input type="text"
+                        class="form-control"
+                        name="cylLeft" autocomplete="on"
+                        id="field_cylLeft"
+                        formControlName="cylLeft" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_axisLeft">Axis Left</label>
+                    <input type="text"
+                        class="form-control" autocomplete="on"
+                        name="axisLeft"
+                        id="field_axisLeft"
+                        formControlName="axisLeft" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_readingLeft">Reading Left</label>
+                    <input type="text"
+                        class="form-control" autocomplete="on"
+                        name="readingLeft"
+                        id="field_readingLeft"
+                        formControlName="readingLeft" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_sphRight">Sph Right</label>
+                    <input type="text"
+                        class="form-control"
+                        name="sphRight"
+                        id="field_sphRight" autocomplete="on"
+                        formControlName="sphRight" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_cylRight">Cyl Right</label>
+                    <input type="text"
+                        class="form-control"
+                        name="cylRight" autocomplete="on"
+                        id="field_cylRight"
+                        formControlName="cylRight" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_axisRight">Axis Right</label>
+                    <input type="text"
+                        class="form-control" autocomplete="on"
+                        name="axisRight"
+                        id="field_axisRight"
+                        formControlName="axisRight" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_readingRight">Reading Right</label>
+                    <input type="text"
+                        class="form-control" autocomplete="on"
+                        name="readingRight"
+                        id="field_readingRight"
+                        formControlName="readingRight" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_orderDate">Order Date</label>
+                    <div class="d-flex">
+                        <input id="field_orderDate"
+                            type="datetime-local"
+                            class="form-control"
+                            name="orderDate"
+                            formControlName="orderDate"
+                            placeholder="YYYY-MM-DD HH:mm" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_deleveryDate">Delevery Date</label>
+                    <div class="d-flex">
+                        <input id="field_deleveryDate"
+                            type="datetime-local"
+                            class="form-control"
+                            name="deleveryDate"
+                            formControlName="deleveryDate"
+                            placeholder="YYYY-MM-DD HH:mm" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_orderNo">Order No</label>
+                    <input type="text"
+                        class="form-control"
+                        name="orderNo"
+                        id="field_orderNo"
+                        formControlName="orderNo" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_frame">Frame</label>
+                    <input type="text"
+                        class="form-control"
+                        name="frame" autocomplete="on"
+                        id="field_frame"
+                        formControlName="frame" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_modelNo">Model No</label>
+                    <input type="text"
+                        class="form-control"
+                        name="modelNo" autocomplete="on"
+                        id="field_modelNo"
+                        formControlName="modelNo" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_size">Size</label>
+                    <input type="text"
+                        class="form-control"
+                        name="size" autocomplete="on"
+                        id="field_size"
+                        formControlName="size" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_colour">Colour</label>
+                    <input type="text"
+                        class="form-control"
+                        name="colour" autocomplete="on"
+                        id="field_colour"
+                        formControlName="colour" />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label"
+                        for="field_lType">L Type</label>
+                      <!-- <input type="text"
+                        class="form-control"
+                        name="lType"
+                        id="field_lType"
+                        formControlName="lType" /> -->
+
+                    <input list="ltype"
+                        type="text"
+                        class="form-control"
+                        name="lType"  autocomplete="on"
+                        id="field_lType"
+                        formControlName="lType">
+
+                    <datalist id="ltype" 
+                        style="width: 100%;">
+                        <!-- <option [value]="item.itemName+' '+item.brandName+' | '+item.modelNumber">size:{{ item.size }}| type:{{ item.type}}| qty:{{item.quantity}}| price:{{item.price}} </option> -->
+
+                        <option value="  CR 39"></option>
+                        <option value="CR MC"></option>
+                        <option value=" CR MC PG"></option>
+                        <option value="  CR MC BC"></option>
+                        <option value="  CR MC BC PG"></option>
+                        <option value="  CR 39 V/Lax"></option>
+                        <option value="  CR MC V/Lax"></option>
+                        <option value="  CR MC PG V/Lax"></option>
+                        <option value="  CR MC BC V/Lax"></option>
+                        <option value="  CR MC BC PG V/Lax"></option>
+                        <!-- <option value="Firefox">
+                               <option value="Chrome">
+                               <option value="Opera">
+                               <option value="Safari"> -->
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_lSize">L Size</label>
+                    <input type="text"
+                        class="form-control"
+                        name="lSize"  autocomplete="on"
+                        id="field_lSize"
+                        formControlName="lSize" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_pd">Pd</label>
+                    <input type="text"
+                        class="form-control"
+                        name="pd"  autocomplete="on"
+                        id="field_pd"
+                        formControlName="pd" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_inset">Inset</label>
+                    <input type="text"
+                        class="form-control"
+                        name="inset"
+                        id="field_inset"
+                        formControlName="inset" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_name">Name</label>
+                    <input type="text"
+                        class="form-control"
+                        name="name"
+                        id="field_name"
+                        formControlName="name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label"
+                        for="field_remarks">Remarks</label>
+                    <input type="text"
+                        class="form-control"
+                        name="remarks" autocomplete="on"
+                        id="field_remarks"
+                        formControlName="remarks" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button"
+                    id="cancel-save"
+                    class="btn btn-secondary"
+                    (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit"
+                    id="save-entity"
+                    [disabled]="editForm.invalid || isSaving"
+                    class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

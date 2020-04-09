@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="solderingJobInvoice">
+            <h2><span>Soldering Job Invoice</span> {{solderingJobInvoice.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Customer Id</span></dt>
+                <dd>
+                    <span>{{solderingJobInvoice.customerId}}</span>
+                </dd>
+                <dt><span>Price</span></dt>
+                <dd>
+                    <span>{{solderingJobInvoice.price}}</span>
+                </dd>
+                <dt><span>Order Date</span></dt>
+                <dd>
+                    <span>{{solderingJobInvoice.orderDate}}</span>
+                </dd>
+                <dt><span>Delivered</span></dt>
+                <dd>
+                    <span>{{solderingJobInvoice.delivered}}</span>
+                </dd>
+                <dt><span>Delivery Date</span></dt>
+                <dd>
+                    <span>{{solderingJobInvoice.deliveryDate}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/soldering-job-invoice', solderingJobInvoice.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

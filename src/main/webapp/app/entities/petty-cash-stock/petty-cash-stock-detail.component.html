@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pettyCashStock">
+            <h2><span>Petty Cash Stock</span> {{pettyCashStock.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Item Name</span></dt>
+                <dd>
+                    <span>{{pettyCashStock.itemName}}</span>
+                </dd>
+                <dt><span>Brand Name</span></dt>
+                <dd>
+                    <span>{{pettyCashStock.brandName}}</span>
+                </dd>
+                <dt><span>Model Number</span></dt>
+                <dd>
+                    <span>{{pettyCashStock.modelNumber}}</span>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <span>{{pettyCashStock.type}}</span>
+                </dd>
+                <dt><span>Size</span></dt>
+                <dd>
+                    <span>{{pettyCashStock.size}}</span>
+                </dd>
+                <dt><span>Remarks</span></dt>
+                <dd>
+                    <span>{{pettyCashStock.remarks}}</span>
+                </dd>
+                <dt><span>Quantity</span></dt>
+                <dd>
+                    <span>{{pettyCashStock.quantity}}</span>
+                </dd>
+                <dt><span>Price</span></dt>
+                <dd>
+                    <span>{{pettyCashStock.price}}</span>
+                </dd>
+                <dt><span>Discounted Price</span></dt>
+                <dd>
+                    <span>{{pettyCashStock.discountedPrice}}</span>
+                </dd>
+                <dt><span>Stock In Date</span></dt>
+                <dd>
+                    <span>{{pettyCashStock.stockInDate}}</span>
+                </dd>
+                <dt><span>Est Next Stock In Date</span></dt>
+                <dd>
+                    <span>{{pettyCashStock.estNextStockInDate}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/petty-cash-stock', pettyCashStock.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

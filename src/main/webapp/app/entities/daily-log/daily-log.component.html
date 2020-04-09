@@ -1,0 +1,438 @@
+<div>
+    <h2 id="page-heading">
+        <span>Daily Logs</span>
+        <button id="jh-create-entity"
+            class="btn btn-primary float-right jh-create-entity create-daily-log"
+            [routerLink]="['/daily-log/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down">
+                Create a new Daily Log
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm"
+                class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text"
+                        class="form-control"
+                        [(ngModel)]="currentSearch"
+                        id="currentSearch"
+                        name="currentSearch"
+                        placeholder="Query">
+                    <button class="input-group-append btn btn-info"
+                        (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger"
+                        (click)="clear()"
+                        *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br />
+    <div class="alert alert-warning"
+        *ngIf="dailyLogs?.length === 0">
+        <span>No dailyLogs found</span>
+    </div>
+    <div class="table-responsive"
+        *ngIf="dailyLogs?.length > 0">
+        <table class="table table-striped"
+            aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort
+                    [(predicate)]="predicate"
+                    [(ascending)]="reverse"
+                    [callback]="transition.bind(this)">
+                    <th scope="col"
+                        jhiSortBy="id"><span>ID</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col"
+                        jhiSortBy="createdDate"><span>Created Date</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col"
+                        jhiSortBy="rx"><span>Rx/ Identification</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col"
+                        jhiSortBy="invoiceId"><span>Invoice Id</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col"
+                        jhiSortBy="solderingJobInvoiceId"><span>Soldering Job Invoice Id</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col"
+                        jhiSortBy="customer"><span>Customer/ User</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col"
+                        jhiSortBy="customerId"><span>Customer Id</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col"
+                        jhiSortBy="description"><span>Description</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col"
+                        jhiSortBy="amount"><span>Amount</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dailyLog of dailyLogs ;trackBy: trackId">
+                    <td><a [routerLink]="['/daily-log', dailyLog.id, 'view' ]">{{dailyLog.id}}</a></td>
+                    <td>{{dailyLog.createdDate | date:'mediumDate'}}</td>
+                    <td>{{dailyLog.rx}}</td>
+                    <td>{{dailyLog.invoiceId}}</td>
+                    <td>{{dailyLog.solderingJobInvoiceId}}</td>
+                    <td>{{dailyLog.customer}}</td>
+                    <td>{{dailyLog.customerId}}</td>
+                    <td>{{dailyLog.description}}</td>
+                    <td>{{dailyLog.amount}}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                [routerLink]="['/daily-log', dailyLog.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                                <fa-icon [icon]="'eye'"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+                            <button type="submit"
+                                [routerLink]="['/daily-log', dailyLog.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+                            <button type="submit"
+                                [routerLink]="['/daily-log', { outlets: { popup: dailyLog.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="dailyLogs?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page"
+                [total]="totalItems"
+                [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems"
+                [(page)]="page"
+                [pageSize]="itemsPerPage"
+                [maxSize]="5"
+                [rotate]="true"
+                [boundaryLinks]="true"
+                (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
+
+<div class="card border-primary mb-3"
+    style="max-width: 100%;">
+    <div class="card-header">Daily Transactions</div>
+    <div class="card-body">
+        <h4 class="card-title">Daily transactions setllement</h4>
+        <div class="row">
+            <div class="col-3">
+                <form [formGroup]="editForm"
+                    name="editForm"
+                    role="form"
+                    novalidate>
+                    <div class="form-group">
+                        <label class="form-control-label"
+                            for="field_generateReportDate">Generate Report Date</label>
+                        <div class="input-group">
+                            <input id="field_generateReportDate"
+                                type="text"
+                                class="form-control"
+                                name="generateReportDate"
+                                (input)="onDateSelected()"
+                                ngbDatepicker
+                                #generateReportDateDp="ngbDatepicker"
+                                formControlName="generateReportDate" />
+                            <span class="input-group-append">
+                                <button type="button"
+                                    class="btn btn-secondary"
+                                    (click)="generateReportDateDp.toggle()">
+                                    <fa-icon [icon]="'calendar-alt'"></fa-icon>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+
+                <button type="button"
+                    id="view-entity"
+                    (click)="viewReportSummary()"
+                    style="width: 100%;"
+                    class="btn btn-primary btn-lg">
+                    <fa-icon [icon]="'eye'"></fa-icon>&nbsp;<span>View Summary</span>
+                </button>
+                <br>
+                <button type="button"
+                    id="view-entity"
+                    (click)="ExportTOExcel() "
+                    style="width: 100%;"
+                    [disabled]="todayReportRecordsCount===0"
+                    class="btn btn-warning btn-lg">
+                    <fa-icon [icon]="'file-excel'"></fa-icon>&nbsp;<span>Download Report</span>
+                </button>
+            </div>
+            <div class="col-3">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total transactions count
+
+
+                        <span class="badge badge-primary badge-pill">{{todayReportRecordsCount}}</span>
+                    </li>
+
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Amount B/F
+                        <span class="badge badge-primary badge-pill">{{bfAmount}}</span>
+                    </li>
+
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total full paid transactions
+                        <span class="badge badge-primary badge-pill">{{fullPaidCount}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total advance transactions
+                        <span class="badge badge-primary badge-pill">{{advanceCount}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total balance transactions
+                        <span class="badge badge-primary badge-pill">{{balanceCount}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total soldering job transactions
+                        <span class="badge badge-primary badge-pill">{{solderingJobCount}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total revenue
+                        <span class="badge badge-primary badge-pill">{{totalRevenueLocalString}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <form [formGroup]="calcBalanceForm"
+                    name="calcBalanceForm"
+                    role="form"
+                    novalidate>
+
+                    <div class="form-group">
+                        <label class="form-control-label"
+                            for="field_createdDate">Created Date</label>
+                        <div class="input-group">
+                            <input id="field_createdDate"
+                                type="text"
+                                class="form-control"
+                                name="createdDate"
+                                ngbDatepicker
+                                #createdDateDp="ngbDatepicker"
+                                formControlName="createdDate" />
+                            <span class="input-group-append">
+                                <button type="button"
+                                    class="btn btn-secondary"
+                                    (click)="createdDateDp.toggle()">
+                                    <fa-icon [icon]="'calendar-alt'"></fa-icon>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label"
+                            for="field_amountToHand">Amount to be withdraw</label>
+                        <input type="number"
+                            class="form-control"
+                            (input)="onAmountInHandChanged()"
+                            name="amountToHand"
+                            id="amountToHand"
+                            formControlName="amountToHand" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label"
+                            for="field_amountBF">B/F</label>
+                        <input type="number"
+                            class="form-control"
+                            name="amountBF"
+                            id="field_amountBF"
+                            formControlName="amountBF" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label"
+                            for="field_bfDate">B/F Date</label>
+                        <div class="input-group">
+                            <input id="field_bfDate"
+                                type="text"
+                                class="form-control"
+                                name="bfDate"
+                                ngbDatepicker
+                                #bfDateDp="ngbDatepicker"
+                                formControlName="bfDate" />
+                            <span class="input-group-append">
+                                <button type="button"
+                                    class="btn btn-secondary"
+                                    (click)="bfDateDp.toggle()">
+                                    <fa-icon [icon]="'calendar-alt'"></fa-icon>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <button type="button"
+                        id="calcbalance"
+                        [disabled]="todayReportRecordsCount===0"
+                        (click)="calcbalance()"
+                        style="width: 100%;"
+                        class="btn btn-primary btn-lg">
+                        <fa-icon [icon]="'calculator'"></fa-icon>&nbsp;<span>Calculate Balance</span>
+                    </button>
+                </form>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<!-- <div class="card border-warning mb-3"
+    style="max-width: 100%;">
+    <div class="card-header">Monthly report</div>
+    <div class="card-body">
+        <h4 class="card-title">Monthly report genration</h4>
+
+        
+        <form [formGroup]="calcMonthlyForm"
+        name="calcMonthlyForm"
+        role="form"
+        novalidate>
+            <div class="row">
+                <div class="col-6">
+                      <div class="form-group">
+                <label class="form-control-label"
+                    for="field_year">Year</label>
+                <select class="form-control"
+                    name="year"  autocomplete="on"
+                    formControlName="year"
+                    id="field_year">
+                    <option  value="2020" >2020</option> 
+                    <option  value="2021" >2021</option> 
+                    <option  value="2022" >2022</option> 
+                    <option  value="2023" >2023</option> 
+                    <option  value="2024" >2024</option> 
+                    <option  value="2025" >2025</option> 
+                    <option  value="2026" >2026</option> 
+                    <option  value="2027" >2027</option> 
+                    <option  value="2028" >2028</option> 
+                    <option  value="2029" >2029</option> 
+                    <option  value="2030" >2030</option> 
+                    <option  value="2031" >2031</option> 
+                    <option  value="2032" >2032</option> 
+                    <option  value="2033" >2033</option> 
+                    <option  value="2034" >2034</option> 
+                    <option  value="2035" >2035</option>  
+                    <option  value="2036" >2036</option> 
+                    <option  value="2037" >2037</option> 
+                    <option  value="2038" >2038</option> 
+                    <option  value="2039" >2039</option> 
+                    <option  value="2040" >2040</option> 
+
+
+
+                </select>
+            </div>
+
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                <label class="form-control-label"
+                    for="field_month">Month</label>
+                <select class="form-control"
+                    name="month"
+                    formControlName="month"
+                    id="field_month">
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+
+
+
+                </select>
+            </div>
+        
+                </div>
+                <div class="col-6">
+
+                    <button type="button"
+                    id="viewMonthlyReport"
+                    (click)="viewMonthlyReport()"
+                    style="width: 100%;"
+                    class="btn btn-primary btn-lg">
+                    <fa-icon [icon]="'eye'"></fa-icon>&nbsp;<span>View Summary</span>
+                </button>
+                <br>
+                <button type="button"
+                    id="vsaveToMonthlyLog"
+                    (click)="saveToMonthlyLog() "
+                    style="width: 100%;"
+                    [disabled]="withdrawMonthlyTotal===0"
+                    class="btn btn-success btn-lg">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save to Monthly Log </span>
+                </button>
+                <button type="button"
+                    id="ExportMonthlyTOExcel"
+                    (click)="ExportMonthlyTOExcel() "
+                    style="width: 100%;"
+                    [disabled]="withdrawMonthlyTotal===0"
+                    class="btn btn-warning btn-lg">
+                    <fa-icon [icon]="'file-excel'"></fa-icon>&nbsp;<span> Download Report</span>
+                </button>
+                </div>
+                <div class="col-6">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Total revenue for the month selected
+                            <span class="badge badge-primary badge-pill">Rs. {{withdrawMonthlyTotalString}}</span>
+                        </li>
+                </div>
+
+            </div>
+          
+            
+        
+        </form>
+    </div>
+</div> -->

@@ -1,0 +1,49 @@
+{
+    "name": "DailyLog",
+    "fields": [
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "rx",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "invoiceId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "solderingJobInvoiceId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "customer",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "customerId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200102182203",
+    "entityTableName": "daily_log",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

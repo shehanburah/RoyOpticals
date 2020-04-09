@@ -1,0 +1,268 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div class="row">
+            <div class="col-5">
+                <div *ngIf="customer">
+                    <h2><span>Customer</span> {{customer.id}}</h2>
+                    <hr>
+                    <jhi-alert-error></jhi-alert-error>
+                    <dl class="row-md jh-entity-details">
+                        <dt><span>Title</span></dt>
+                        <dd>
+                            <span>{{customer.title}}</span>
+                        </dd>
+                        <dt><span>First Name</span></dt>
+                        <dd>
+                            <span>{{customer.firstName}}</span>
+                        </dd>
+                        <dt><span>Last Name</span></dt>
+                        <dd>
+                            <span>{{customer.lastName}}</span>
+                        </dd>
+                        <!-- <dt><span>Dob</span></dt>
+                        <dd>
+                            <span>{{customer.dob}}</span>
+                        </dd> -->
+                        <dt><span>City</span></dt>
+                        <dd>
+                            <span>{{customer.city}}</span>
+                        </dd>
+                        <dt><span>Address</span></dt>
+                        <dd>
+                            <span>{{customer.address}}</span>
+                        </dd>
+                        <dt><span>Mobile</span></dt>
+                        <dd>
+                            <span>{{customer.mobile}}</span>
+                        </dd>
+                        <dt><span>Landline</span></dt>
+                        <dd>
+                            <span>{{customer.landline}}</span>
+                        </dd>
+                        <!-- <dt><span>Gender</span></dt>
+                        <dd>
+                            <span>{{customer.gender}}</span>
+                        </dd> -->
+                        <dt><span>Registered</span></dt>
+                        <dd>
+                            <span>{{customer.registered  | date:'dd/MM/yyyy'}}</span>
+                        </dd>
+                    </dl>
+
+                    <button type="submit"
+                        (click)="previousState()"
+                        class="btn btn-info">
+                        <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                    </button>
+
+                    <button type="button"
+                        [routerLink]="['/customer', customer.id, 'edit']"
+                        class="btn btn-primary">
+                        <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                    </button>
+                    <button type="button"
+                        [routerLink]="['/invoice', customer.id, 'new']"
+                        class="btn btn-success">
+                        <fa-icon [icon]="'plus-square'"></fa-icon>&nbsp;<span> Issue an Invoice</span>
+                    </button>
+                </div>
+            </div>
+            <!-- <div class="col-7">
+                <div class="card border-primary mb-3"
+                    style="max-width: 100%; max-height: 480px; height: 480px; overflow-y: auto;">
+                    <div class="card-header">Soldering Jobs
+                        <button type="button"
+                            style="float: right; margin-right: 5px;"
+                            [routerLink]="['/soldering-job-invoice', customer.id, 'new']"
+                            class="btn btn-warning">
+                            <fa-icon [icon]="'plus-square'"></fa-icon>&nbsp;<span> Issue an Soldering Invoice</span>
+                        </button>
+                        <button style="float: right; margin-right: 5px;"
+                            (click)="sortNowSoldering()"
+                            class="btn btn-success">Sort- latest at top</button> </div>
+                    <div class="card-body">
+
+                        <h4 class="card-title">Issued Soldering Job Invoices </h4>
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+
+                                    <th scope="col"
+                                        width="15%">Invoice ID</th>
+                                    <th scope="col">Price</th>
+
+                                    <th scope="col">Order Date</th>
+                                    <th scope="col">Delivered</th>
+                                    <th scope="col">Delivery Date</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let item of solderingInvoices">
+                                    <th>
+                                        <a [routerLink]="['/soldering-job-invoice/'+item.id +'/view'   ]">
+                                            <marquee width="100%"
+                                                scrollamount="3"">{{item.id}}</marquee></a> 
+                                </th>
+                                    <td>{{item.price}}</td>
+                                    <td>{{item.orderDate | date:'dd/MM/yyyy'}}</td>
+                                    <td>  <span class="
+                                                badge
+                                                badge-danger"
+                                                *ngIf="!item.delivered">FALSE</span>
+                                                <span class="badge badge-success"
+                                                    *ngIf="item.delivered">TRUE</span></td>
+                                    <td>{{item.deliveryDate | date:'dd/MM/yyyy'}}</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+
+
+        <div style="
+                                                padding-top:
+                                                2%; height: 1000px; overflow-y: auto;">
+            <div class="card border-primary mb-3"
+                style="max-width: 100%;">
+                <div class="card-header">Personal History
+                    <button type="button"
+                        style="float: right; margin-right: 5px;"
+                        [routerLink]="['/invoice', customer.id, 'new']"
+                        class="btn btn-warning">
+                        <fa-icon [icon]="'plus-square'"></fa-icon>&nbsp;<span> Issue
+                            an Invoice</span>
+                    </button>
+
+                    <button style="float: right; margin-right: 5px;"
+                        (click)="sortNow()"
+                        class="btn btn-success">Sort- latest at top</button>
+                </div>
+                <div class="card-body">
+
+                    <h4 class="card-title">Issued Invoices and Prescriptions</h4>
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col"
+                                    width="8%">Invoice Id</th>
+                                <th scope="col"
+                                    width="8%">Print</th>
+
+
+                                <th scope="col"
+                                    width="8%">Rx</th>
+                                <th scope="col"
+                                    width="8%">Issued Date</th>
+                                <th scope="col"
+                                    width="10%">Delivery Date</th>
+                                <th scope="col"
+                                    width="4%">Delivered</th>
+                                <th scope="col"
+                                    width="4%">Paid</th>
+                                <th scope="col"
+                                    width="8%">....</th>
+                                <th scope="col">Descriptions</th>
+                                <th scope="col">Prescriptions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of invoicesNprescriptions">
+                                <th scope="row"> <a [routerLink]="['/invoice/'+item.id +'/view'   ]">
+                                        <marquee width="100%"
+                                            scrollamount="3"">{{item.id}}</marquee></a> </th>
+<th>
+    
+    <button  
+    (click)="
+                                            printThisInvoice(item.id)"
+                                            class="btn btn-success">
+                                            <fa-icon [icon]="'print'"></fa-icon>&nbsp;<span></span></button> </th>
+
+                                <td>{{item.rx}}</td>
+                                <td>{{item.orderDate | date:'dd/MM/yyyy'}}</td>
+                                <td>{{item.deleveryDate | date:'dd/MM/yyyy'}}</td>
+                                <td>
+                                    <span class="
+                                                                                badge
+                                                                                badge-danger"
+                                        *ngIf="!item.delivered">FALSE</span>
+                                    <span class="badge badge-success"
+                                        *ngIf="item.delivered">TRUE</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-danger"
+                                        *ngIf="!item.paid">FALSE</span>
+                                    <span class="badge badge-success"
+                                        *ngIf="item.paid">TRUE</span></td>
+                                <td>
+                                    <button type="
+                                        button"
+                                        [routerLink]="['/description', customer.id,item.id, 'new']"
+                                        class="btn btn-success  btn-sm">
+                                        <fa-icon [icon]="'plus-square'"></fa-icon>
+                                        &nbsp;<span> Issue a
+                                            Description</span>
+                                    </button>
+                                    <button type="button"
+                                        [routerLink]="['/prescription', customer.id,item.id,customer.title+'. '+customer.firstName+' '+customer.lastName, 'new']"
+                                        class="btn btn-warning  btn-sm">
+                                        <fa-icon [icon]="'plus-square'"></fa-icon>
+                                        &nbsp;<span> Issue a
+                                            Prescription</span>
+                                    </button>
+
+                                </td>
+                                <td>
+                                    <div>
+                                        <div style="width: 95%; height: 110px; overflow-y: scroll; overflow-x: hidden">
+                                            <a *ngFor="let i of item.descriptions "
+                                                [routerLink]="['/description/'+i.id +'/view'   ]"
+                                                style="width: 100%;">
+                                                <p>
+                                                    Issued on
+                                                    {{i.orderDate | date:'dd-MMMM-yyyy'}}
+                                                </p>
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+
+                                </td>
+                                <td>
+                                    <div>
+                                        <div style="width: 95%; height: 110px; overflow-y: scroll; overflow-x: hidden">
+                                            <a *ngFor="let i of item.prescriptions "
+                                                [routerLink]="['/prescription/'+i.id +'/view'   ]"
+                                                style="width: 100%;">
+                                                <p>
+                                                    Issued on
+                                                    {{i.orderDate | date:'dd-MMMM-yyyy'}}
+                                                </p>
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
