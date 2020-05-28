@@ -33,7 +33,7 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!-- <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
             <th scope="col"  jhiSortBy="customerId"><span>Customer Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="invoiceId"><span>Invoice Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="sphLeft"><span>Sph Left</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -62,7 +62,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let description of descriptions ;trackBy: trackId">
-                <td><a [routerLink]="['/description', description.id, 'view' ]">{{description.id}}</a></td>
+                <!-- <td><a [routerLink]="['/description', description.id, 'view' ]">{{description.id}}</a></td> -->
                 <td>{{description.customerId}}</td>
                 <td>{{description.invoiceId}}</td>
                 <td>{{description.sphLeft}}</td>

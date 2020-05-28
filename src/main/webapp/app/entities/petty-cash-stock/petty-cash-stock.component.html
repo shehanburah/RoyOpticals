@@ -33,7 +33,7 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!-- <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
             <th scope="col"  jhiSortBy="itemName"><span>Item Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="brandName"><span>Brand Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="modelNumber"><span>Model Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -50,7 +50,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let pettyCashStock of pettyCashStocks ;trackBy: trackId">
-                <td><a [routerLink]="['/petty-cash-stock', pettyCashStock.id, 'view' ]">{{pettyCashStock.id}}</a></td>
+                <!-- <td><a [routerLink]="['/petty-cash-stock', pettyCashStock.id, 'view' ]">{{pettyCashStock.id}}</a></td> -->
                 <td>{{pettyCashStock.itemName}}</td>
                 <td>{{pettyCashStock.brandName}}</td>
                 <td>{{pettyCashStock.modelNumber}}</td>

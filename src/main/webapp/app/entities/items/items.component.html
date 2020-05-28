@@ -33,7 +33,7 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!-- <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
             <th scope="col"  jhiSortBy="invoiceId"><span>Invoice Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="description"><span>Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="quantity"><span>Quantity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -44,7 +44,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let items of items ;trackBy: trackId">
-                <td><a [routerLink]="['/items', items.id, 'view' ]">{{items.id}}</a></td>
+                <!-- <td><a [routerLink]="['/items', items.id, 'view' ]">{{items.id}}</a></td> -->
                 <td>{{items.invoiceId}}</td>
                 <td>{{items.description}}</td>
                 <td>{{items.quantity}}</td>
