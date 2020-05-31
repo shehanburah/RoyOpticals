@@ -155,8 +155,6 @@
                                     width="8%">Invoice Id</th>
                                 <th scope="col"
                                     width="8%">Print</th>
-
-
                                 <th scope="col"
                                     width="8%">Rx</th>
                                 <th scope="col"
@@ -170,7 +168,7 @@
                                 <th scope="col"
                                     width="8%">....</th>
                                 <th scope="col">Descriptions</th>
-                                <th scope="col">Prescriptions</th>
+                                <!-- <th scope="col">Prescriptions</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -178,10 +176,7 @@
                                 <th scope="row"> <a [routerLink]="['/invoice/'+item.id +'/view'   ]">
                                         <marquee width="100%"
                                             scrollamount="3"">{{item.id}}</marquee></a> </th>
-<th>
-    
-    <button  
-    (click)="
+                                <th><button (click)="
                                             printThisInvoice(item.id)"
                                             class="btn btn-success">
                                             <fa-icon [icon]="'print'"></fa-icon>&nbsp;<span></span></button> </th>
@@ -190,9 +185,7 @@
                                 <td>{{item.orderDate | date:'dd/MM/yyyy'}}</td>
                                 <td>{{item.deleveryDate | date:'dd/MM/yyyy'}}</td>
                                 <td>
-                                    <span class="
-                                                                                badge
-                                                                                badge-danger"
+                                    <span class="badge badge-danger"
                                         *ngIf="!item.delivered">FALSE</span>
                                     <span class="badge badge-success"
                                         *ngIf="item.delivered">TRUE</span>
@@ -211,13 +204,13 @@
                                         &nbsp;<span> Issue a
                                             Description</span>
                                     </button>
-                                    <button type="button"
+                                    <!-- <button type="button"
                                         [routerLink]="['/prescription', customer.id,item.id,customer.title+'. '+customer.firstName+' '+customer.lastName, 'new']"
                                         class="btn btn-warning  btn-sm">
                                         <fa-icon [icon]="'plus-square'"></fa-icon>
                                         &nbsp;<span> Issue a
                                             Prescription</span>
-                                    </button>
+                                    </button> -->
 
                                 </td>
                                 <td>
@@ -237,7 +230,7 @@
 
 
                                 </td>
-                                <td>
+                                <!-- <td>
                                     <div>
                                         <div style="width: 95%; height: 110px; overflow-y: scroll; overflow-x: hidden">
                                             <a *ngFor="let i of item.prescriptions "
@@ -253,7 +246,7 @@
                                     </div>
 
 
-                                </td>
+                                </td> -->
                             </tr>
                         </tbody>
                     </table>
